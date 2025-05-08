@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save World - Smart Coleta</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/usuario2.css">
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="menu" id="menu" data-aos="fade-right">
+        <div class="smart">
+            <h2>Smart Coleta</h2>                
+        </div>
+        <div id="enderecoExibido" class="endereco-exibido">
+            <ul id="listaEnderecos"></ul>
+        </div>
+        <article class="reciclagem" onclick="selectTipo(this)">
+            <i class="fas fa-recycle"></i>
+            <h3>Reciclável</h3>
+            <p>Papel, plástico, vidro e metal</p>
+        </article>
+        <article class="reciclagem" onclick="selectTipo(this)">
+            <i class="fas fa-apple-alt"></i>
+            <h3>Orgânico</h3>
+            <p>Restos de alimentos e materiais biodegradáveis</p>
+        </article>
+        <article class="reciclagem" onclick="selectTipo(this)">
+            <i class="fas fa-radiation"></i>
+            <h3>Especial</h3>
+            <p>Pilhas, baterias e eletrônicos</p>
+        </article>
+    </aside>
+
+    <main class="container">
+        <section class="endereco_container">
+            <div class="endereco_filho">
+                <article class="item">
+                    <label for="Estado">
+                        <i class="fas fa-road"></i>
+                        Estado
+                    </label>
+                    <input type="text" id="Estado" placeholder="Digite o nome do Estado">
+                </article>
+                <article class="item">
+                    <label for="rua">
+                        <i class="fas fa-road"></i>
+                        Rua
+                    </label>
+                    <input type="text" id="rua" placeholder="Digite o nome da rua">
+                </article>
+                <article class="item">
+                    <label for="numero">
+                        <i class="fas fa-home"></i>
+                        Número
+                    </label>
+                    <input type="text" id="numero" placeholder="Digite o número">
+                </article>
+                <article class="item">
+                    <label for="cep">
+                        <i class="fas fa-map-marker-alt"></i>
+                        CEP
+                    </label>
+                    <input type="text" id="cep" placeholder="Digite o CEP" onblur="buscarCEP()">
+                </article>
+                <article class="item">
+                    <label for="bairro">
+                        <i class="fas fa-map"></i>
+                        Bairro
+                    </label>
+                    <input type="text" id="bairro" placeholder="Digite o bairro">
+                </article>
+                <article class="item">
+                    <label for="cidade">
+                        <i class="fas fa-city"></i>
+                        Cidade
+                    </label>
+                    <input type="text" id="cidade" placeholder="Digite a cidade">
+                </article>
+            </div>
+
+            <section class="agenda_container" data-aos="fade-up">
+                <h2>Agendar Coleta</h2>
+                <article class="input">
+                    <label style="color: white;">Data da Coleta</label>
+                    <input type="date" id="data" min="">
+                </article>
+                <section class="horas">
+                    <article class="horario" onclick="selectHorario(this)">
+                        <p>08:00 - 09:00</p>
+                    </article>
+                    <article class="horario" onclick="selectHorario(this)">
+                        <p>09:00 - 10:00</p>
+                    </article>
+                    <article class="horario" onclick="selectHorario(this)">
+                        <p>10:00 - 11:00</p>
+                    </article>
+                    <article class="horario" onclick="selectHorario(this)">
+                        <p>11:00 - 12:00</p>
+                    </article>
+                    <article class="horario" onclick="selectHorario(this)">
+                        <p>12:00 - 13:00</p>
+                    </article>
+                    <article class="horario" onclick="selectHorario(this)">
+                        <p>13:00 - 14:00</p>
+                    </article>
+                </section>
+                <article class="input">
+                    <label style="color: white;">Observações</label>
+                    <textarea id="observacoes" rows="3" placeholder="Informações adicionais..."></textarea>
+                </article>
+            </section>
+            <button class="endereco_btn" onclick="salvarEndereco()">
+                <i class="fas fa-check"></i>
+                Confirmar Endereço
+            </button>
+        </section>
+
+        <div class="card mt-4 animate__animated animate__fadeInUp">
+            <div class="card-body p-4">
+                <h4 class="card-title mb-4">
+                    <i class="fas fa-list text-primary"></i>
+                    Agendamentos Recentes
+                </h4>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Estado</th>
+                                <th>Endereço</th>
+                                <th>Cidade</th>
+                                <th>Data</th>
+                                <th>Horário</th>
+                                <th>Tipo</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-agendamentos">
+                            <!-- Dados serão inseridos aqui -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="../scripts/usuario.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Rota até o Destino</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+    <style>
+        #map { height: 400px; width: 100%; margin-top: 20px; }
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        input, button { padding: 8px; margin: 5px 0; width: 300px; }
+    </style>
+</head>
+<body>
+    <h2>Digite o Endereço de Destino</h2>
+    <input type="text" id="cep" placeholder="Ex: Rua X, 123, Bairro, Cidade">
+    <br>
+    <button onclick="buscarEndereco()">Buscar Rota</button>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+    <script>
+        let map = L.map('map').setView([-15.77972, -47.92972], 4); // Inicia no Brasil
+
+        // Mapa base (OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Map data © OpenStreetMap contributors'
+        }).addTo(map);
+
+        let userMarker;
+        let routeControl;
+
+        // Função para obter a localização atual do usuário
+        function obterGeolocalizacao() {
+            return new Promise((resolve, reject) => {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(resolve, reject);
+                } else {
+                    reject("Geolocalização não é suportada neste navegador.");
+                }
+            });
+        }
+
+        // Função para buscar o endereço do usuário e traçar a rota
+        function buscarEndereco() {
+            const enderecoDestino = document.getElementById('cep').value.trim();
+
+            if (!enderecoDestino) {
+                alert("Por favor, digite um endereço de destino.");
+                return;
+            }
+
+            // Obtém a geolocalização do usuário
+            obterGeolocalizacao().then(position => {
+                const userLat = position.coords.latitude;
+                const userLon = position.coords.longitude;
+
+                // Coloca o marcador na localização do usuário
+                if (userMarker) {
+                    map.removeLayer(userMarker);
+                }
+
+                userMarker = L.marker([userLat, userLon]).addTo(map)
+                    .bindPopup("Você está aqui!")
+                    .openPopup();
+
+                map.setView([userLat, userLon], 14); // Foca no usuário
+
+                // Agora geocodifica o destino
+                fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(enderecoDestino)}`)
+                    .then(res => res.json())
+                    .then(locations => {
+                        if (locations.length > 0) {
+                            const destino = locations[0];
+                            const destinoLat = destino.lat;
+                            const destinoLon = destino.lon;
+
+                            // Coloca um marcador no destino
+                            L.marker([destinoLat, destinoLon]).addTo(map)
+                                .bindPopup(`Destino: ${enderecoDestino}`)
+                                .openPopup();
+
+                            // Traçar a rota
+                            if (routeControl) {
+                                routeControl.setWaypoints([L.latLng(userLat, userLon), L.latLng(destinoLat, destinoLon)]);
+                            } else {
+                                routeControl = L.Routing.control({
+                                    waypoints: [
+                                        L.latLng(userLat, userLon), 
+                                        L.latLng(destinoLat, destinoLon)
+                                    ],
+                                    createMarker: function() { return null; } // Não criar marcador adicional
+                                }).addTo(map);
+                            }
+                        } else {
+                            alert("Destino não encontrado.");
+                        }
+                    })
+                    .catch(() => alert("Erro ao buscar o destino."));
+            }).catch(err => {
+                alert("Erro ao obter a geolocalização: " + err.message);
+            });
+        }
+    </script>
+</body>
+</html>

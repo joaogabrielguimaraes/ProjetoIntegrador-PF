@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: #0a0c0f;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+}
+
+.welcome-section {
+    flex: 1;
+    background: linear-gradient(135deg, #2E7D32 0%, #1B5E20 100%);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+}
+
+.welcome-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?auto=format&fit=crop&w=800&q=80') center/cover;
+    opacity: 0.15;
+    mix-blend-mode: overlay;
+}
+
+.welcome-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    background: rgba(27, 94, 32, 0.85);
+    padding: 3rem;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+.eco-icon {
+    font-size: 5rem;
+    background: linear-gradient(45deg, #81C784, #E8F5E9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 2rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+.welcome-section h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #E8F5E9, #C8E6C9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.welcome-section p {
+    font-size: 1.3rem;
+    color: #C8E6C9;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.menu-section {
+    flex: 2;
+    padding: 3rem;
+    background: #121417;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    align-content: center;
+}
+
+.menu-card {
+    background: rgba(255,255,255,0.03);
+    border-radius: 25px;
+    padding: 2.5rem;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-card:hover {
+    transform: translateY(-15px);
+    background: rgba(46, 125, 50, 0.2);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    border-color: #2E7D32;
+}
+
+.menu-card i {
+    font-size: 3.5rem;
+    color: #2E7D32;
+    margin-bottom: 1.5rem;
+    transition: all 0.5s ease;
+}
+
+.menu-card:hover i {
+    transform: scale(1.2) rotate(360deg);
+    color: #81C784;
+}
+
+.menu-card h2 {
+    color: #E8F5E9;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.menu-card p {
+    color: #C8E6C9;
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+.logout-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    padding: 1rem 2rem;
+    background: rgba(0,0,0,0.3);
+    border: 2px solid #2E7D32;
+    border-radius: 50px;
+    color: #E8F5E9;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.logout-btn:hover {
+    background: #2E7D32;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.footer-logout {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    body {
+        min-height: auto;
+        overflow-y: auto;
+    }
+    
+    .container {
+        flex-direction: column;
+        min-height: auto;
+    }
+    
+    .welcome-section {
+        clip-path: none;
+        padding: 4rem 1rem;
+    }
+
+    .menu-section {
+        padding: 2rem;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .menu-card {
+        height: 200px;
+    }
+
+    .logout-btn {
+        display: none;
+    }
+
+    .footer-logout {
+        display: block;
+        width: 100%;
+        background: #0a0c0f;
+        padding: 1rem;
+        text-align: center;
+        border-top: 1px solid rgba(46, 125, 50, 0.3);
+    }
+
+    .footer-logout a {
+        color: #E8F5E9;
+        text-decoration: none;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .footer-logout i {
+        color: #2E7D32;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-section {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome-section h1 {
+        font-size: 2rem;
+    }
+
+    .eco-icon {
+        font-size: 3.5rem;
+    }
+
+    .menu-card {
+        height: 180px;
+    }
+
+    .menu-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .menu-card p {
+        font-size: 1rem;
+    }
+}

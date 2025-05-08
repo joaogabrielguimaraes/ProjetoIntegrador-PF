@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../scripts/loginMotorista.js" defer></script>
+    <link rel="stylesheet" href="../styles/login.css">
+</head>
+<body>
+    <div class="form_container" data-aos="fade-up">
+        <h2 class="form_titulo">
+            <i class="fas fa-sign-in-alt"></i> Entrar
+        </h2>
+
+        <div class="inserir">
+            <label for="email">Email</label>
+            <input type="text" id="email" placeholder="Digite seu Email" required>
+        </div>
+
+        <div class="inserir">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" placeholder="Digite sua senha" required>
+        </div>
+
+        <button class="btn" onclick="fazerLoginMotorista()">
+            Entrar <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+</body>
+</html>
