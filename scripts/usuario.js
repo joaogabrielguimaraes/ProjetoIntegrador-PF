@@ -1,4 +1,4 @@
-// Inicialização do AOS (Animate On Scroll)
+
 AOS.init({
     duration: 1000,
     once: true
@@ -129,7 +129,6 @@ function salvarEndereco() {
     }
 }
 
-// Função para limpar os campos do formulário
 function limparCampos() {
     document.getElementById("Estado").value = "";
     document.getElementById("rua").value = "";
@@ -175,13 +174,16 @@ function carregarAgendamentos() {
         });
 }
 
-// Função para preencher a tabela com os agendamentos
 function preencherTabela(agendamentos) {
     const tbody = document.getElementById('tabela-agendamentos');
-    tbody.innerHTML = ''; // Limpa a tabela antes de preencher
+    tbody.innerHTML = '';
 
     agendamentos.forEach((agendamento, index) => {
         const row = document.createElement('tr');
+
+        // const concluirNormalizado = (agendamento.concluir || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        // const status = agendamento.concluir === 'sim' ? 'Concluído' : 'Pendente';
+        // const statusClass = agendamento.concluir === 'sim' ? 'status-concluido' : 'status-pendente';
 
         row.innerHTML = `
             <td>${index + 1}</td>
@@ -191,7 +193,7 @@ function preencherTabela(agendamentos) {
             <td>${agendamento.data_coleta || 'N/A'}</td>
             <td>${agendamento.horario_coleta || 'N/A'}</td>
             <td>${agendamento.tipo_coleta || 'N/A'}</td>
-            <td><span class="status-badge status-pendente">Pendente</span></td>
+            <td>${agendamento.concluido || 'N/A'}</td>
             <td>
                 <button class="btn btn-sm btn-outline-danger" onclick="cancelarAgendamento(${agendamento.id})">
                     <i class="fas fa-trash"></i>
@@ -202,6 +204,7 @@ function preencherTabela(agendamentos) {
         tbody.appendChild(row);
     });
 }
+
 
 // Função para cancelar um agendamento
 function cancelarAgendamento(id) {

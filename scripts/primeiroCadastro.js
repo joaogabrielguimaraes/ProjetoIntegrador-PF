@@ -68,7 +68,7 @@ function submitForm() {
         alert(data.mensagem);
         if (data.sucesso) {
             setTimeout(() => {
-                window.location.href = '../pages/usuario.html';
+                window.location.href = '../pages/login.html';
             }, 2000);
         }
     })

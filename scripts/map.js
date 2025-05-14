@@ -71,3 +71,5 @@ let map = L.map('map').setView([-15.77972, -47.92972], 4);
                 alert("Erro ao obter a geolocalização: " + err.message);
             });
         }
+
+
