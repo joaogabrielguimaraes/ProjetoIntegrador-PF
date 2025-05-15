@@ -40,7 +40,7 @@ function buscarCEP() {
             document.getElementById("rua").value = data.logradouro || "";
             document.getElementById("bairro").value = data.bairro || "";
             document.getElementById("cidade").value = data.localidade || "";
-            document.getElementById("Estado").value = data.uf || "";
+            // document.getElementById("complemento").value = data.uf || "";
         })
         .catch(() => {
             showMessage("Erro ao buscar o CEP. Tente novamente.");
@@ -76,7 +76,7 @@ function selectTipo(element) {
 // Função para salvar o endereço e agendamento
 function salvarEndereco() {
     // Obtendo os dados dos campos do formulário
-    const estado = document.getElementById("Estado").value.trim();
+    const complemento = document.getElementById("complemento").value.trim();
     const rua = document.getElementById("rua").value.trim();
     const numero = document.getElementById("numero").value.trim();
     const cep = document.getElementById("cep").value.trim();
@@ -86,9 +86,9 @@ function salvarEndereco() {
     const observacaoColeta = document.getElementById("observacoes").value.trim();
 
     // Verificando se todos os campos obrigatórios foram preenchidos
-    if (estado && rua && numero && cep && bairro && cidade && dataColeta && horarioSelecionado && tipoColetaSelecionado) {
+    if (rua && numero && cep && bairro && cidade && dataColeta && horarioSelecionado && tipoColetaSelecionado) {
         const endereco = {
-            estado: estado,
+            complemento: complemento, // <-- AQUI
             rua: rua,
             numero: numero,
             cep: cep,
@@ -130,7 +130,7 @@ function salvarEndereco() {
 }
 
 function limparCampos() {
-    document.getElementById("Estado").value = "";
+    document.getElementById("complemento").value = "";
     document.getElementById("rua").value = "";
     document.getElementById("numero").value = "";
     document.getElementById("cep").value = "";
@@ -187,7 +187,7 @@ function preencherTabela(agendamentos) {
 
         row.innerHTML = `
             <td>${index + 1}</td>
-            <td>${agendamento.estado || 'N/A'}</td>
+            <td>${agendamento.complemento || 'N/A'}</td>
             <td>${agendamento.rua}, ${agendamento.numero || 'N/A'}</td>
             <td>${agendamento.cidade || 'N/A'}</td>
             <td>${agendamento.data_coleta || 'N/A'}</td>

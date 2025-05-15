@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Save World - Smart Coleta</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="../styles/usuario2.css">
 </head>
 <body>
@@ -13,9 +13,6 @@
     <aside class="menu" id="menu" data-aos="fade-right">
         <div class="smart">
             <h2>Smart Coleta</h2>                
-        </div>
-        <div id="enderecoExibido" class="endereco-exibido">
-            <ul id="listaEnderecos"></ul>
         </div>
         <article class="reciclagem" onclick="selectTipo(this)">
             <i class="fas fa-recycle"></i>
@@ -45,11 +42,18 @@
                     <input type="text" id="cep" placeholder="Digite o CEP" onblur="buscarCEP()">
                 </article>
                 <article class="item">
-                    <label for="Estado">
-                        <i class="fas fa-road"></i>
-                        Estado
+                    <label for="numero">
+                        <i class="fas fa-home"></i>
+                        Número
                     </label>
-                    <input type="text" id="Estado" placeholder="Digite o nome do Estado">
+                    <input type="text" id="numero" placeholder="Digite o número">
+                </article>
+                <article class="item">
+                    <label for="complemento">
+                        <i class="fas fa-road"></i>
+                        Complemento
+                    </label>
+                    <input type="text" id="complemento" placeholder="Digite o complemento, se houver">
                 </article>
                 <article class="item">
                     <label for="rua">
@@ -57,13 +61,6 @@
                         Rua
                     </label>
                     <input type="text" id="rua" placeholder="Digite o nome da rua">
-                </article>
-                <article class="item">
-                    <label for="numero">
-                        <i class="fas fa-home"></i>
-                        Número
-                    </label>
-                    <input type="text" id="numero" placeholder="Digite o número">
                 </article>
                 <article class="item">
                     <label for="bairro">
@@ -129,13 +126,13 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Estado</th>
+                                <th>Complemento</th>
                                 <th>Endereço</th>
                                 <th>Cidade</th>
                                 <th>Data</th>
                                 <th>Horário</th>
                                 <th>Tipo</th>
-                                <th>Concluido</th>
+                                <th>Status</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -148,7 +145,6 @@
         </div>
     </main>
   </div>
-
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="../scripts/usuario.js"></script>
