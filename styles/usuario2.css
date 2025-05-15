@@ -605,7 +605,7 @@ body {
     border: none;
     box-shadow: 0 8px 25px rgba(0,0,0,0.05);
     transition: all 0.4s;
-    background: white;
+    background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
 }
 
@@ -633,19 +633,39 @@ body {
     overflow: hidden;
 }
 
+.table th, .table td {
+    padding: 18px 24px; /* Mais espaçamento interno */
+    text-align: center; /* Centraliza o conteúdo */
+}
+
+.table th:not(:last-child), .table td:not(:last-child) {
+    border-right: 1px solid #e0e0e0; /* Linha vertical suave entre colunas */
+}
+
 .table thead th {
     background: var(--primary-color);
     color: white;
     border: none;
     padding: 15px;
+    letter-spacing: 1px;
+    font-size: 1.08em;
 }
 
 .table tbody tr {
     color: black; /* Altera o texto para preto */
+    height: 60px; /* Altura mínima para as linhas */
+    background-color: rgb(255, 255, 255);
 }
 
 .table-responsive {
     overflow-x: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table {
+    margin: 0 auto;
 }
 
 .table-hover tbody tr:hover {
