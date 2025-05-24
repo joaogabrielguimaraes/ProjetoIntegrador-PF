@@ -2,30 +2,33 @@
 header('Content-Type: application/json');
 session_start(); // Necessário para acessar a variável de sessão
 
-$host = 'localhost';
-$dbname = 'conta';
+$host     = 'localhost';
+$dbname   = 'conta';
 $username = 'root';
 $password = '';
 
-// Verifica se o usuário está logado
 if (!isset($_SESSION['usuario_id'])) {
     echo json_encode(['success' => false, 'error' => 'Usuário não está logado.']);
     exit;
 }
 
-$usuario_id = $_SESSION['usuario_id'];
+$usuario_id = (int) $_SESSION['usuario_id'];
 
-// Conexão com o banco de dados
 $conn = new mysqli($host, $username, $password, $dbname);
 if ($conn->connect_error) {
     echo json_encode(['success' => false, 'error' => 'Conexão falhou: ' . $conn->connect_error]);
     exit;
 }
 
-// Query para buscar os agendamentos do usuário logado
-$sql = "SELECT * FROM enderecos WHERE usuario_id = ? ORDER BY data_coleta DESC";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $usuario_id); // 'i' para inteiro
+if ($usuario_id === 1) {
+    $sql  = "SELECT * FROM enderecos ORDER BY data_coleta DESC";
+    $stmt = $conn->prepare($sql);
+} else {
+    $sql  = "SELECT * FROM enderecos WHERE usuario_id = ? ORDER BY data_coleta DESC";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $usuario_id);
+}
+
 $stmt->execute();
 $result = $stmt->get_result();
 
