@@ -1,3 +1,4 @@
+/* Reset básico e fonte global */
 * {
     margin: 0;
     padding: 0;
@@ -5,20 +6,22 @@
     font-family: 'Poppins', sans-serif;
 }
 
+/* Corpo da página */
 body {
     min-height: 100vh;
     background: #111416;
     color: #e0f2e9;
 }
 
+/* Layout principal */
 .container {
     display: flex;
+    flex-wrap: wrap;
     min-height: 100vh;
     position: relative;
-    flex-wrap: wrap;
 }
 
-/* SEÇÃO DE BOAS-VINDAS */
+/* Seção de boas-vindas */
 .welcome-section {
     flex: 1;
     background: linear-gradient(135deg, #2E7D32, #1B5E20);
@@ -35,8 +38,9 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-    background: url('https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?auto=format&fit=crop&w=800&q=80') center/cover;
+    background: url('https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
     opacity: 0.1;
+    z-index: 0;
 }
 
 .welcome-content {
@@ -50,6 +54,7 @@ body {
     backdrop-filter: blur(12px);
 }
 
+/* Ícone ecológico animado */
 .eco-icon {
     font-size: 4rem;
     background: linear-gradient(45deg, #A5D6A7, #E8F5E9);
@@ -64,6 +69,7 @@ body {
     50% { transform: translateY(-10px); }
 }
 
+/* Títulos da seção de boas-vindas */
 .welcome-section h1 {
     font-size: 2.4rem;
     background: linear-gradient(to right, #E8F5E9, #C8E6C9);
@@ -81,7 +87,7 @@ body {
     letter-spacing: 2px;
 }
 
-/* MENU PRINCIPAL */
+/* Seção de menu */
 .menu-section {
     flex: 2;
     padding: 3rem;
@@ -97,9 +103,9 @@ body {
     border-radius: 20px;
     padding: 2rem;
     text-align: center;
-    transition: 0.4s ease;
     border: 1px solid rgba(255,255,255,0.05);
     backdrop-filter: blur(8px);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -116,7 +122,7 @@ body {
     font-size: 3rem;
     color: #66bb6a;
     margin-bottom: 1.2rem;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .menu-card:hover i {
@@ -137,7 +143,7 @@ body {
     opacity: 0.85;
 }
 
-/* BOTÃO DE LOGOUT */
+/* Botão de logout para desktop */
 .logout-btn {
     position: absolute;
     top: 1.5rem;
@@ -158,7 +164,7 @@ body {
     box-shadow: 0 8px 15px rgba(0,0,0,0.2);
 }
 
-/* RODAPÉ MOBILE */
+/* Rodapé com botão para mobile */
 .footer-logout {
     display: none;
     width: 100%;
@@ -167,6 +173,7 @@ body {
     text-align: center;
     border-top: 1px solid rgba(76, 175, 80, 0.1);
 }
+
 .footer-logout a {
     color: #e8f5e9;
     text-decoration: none;
@@ -176,26 +183,31 @@ body {
     justify-content: center;
     gap: 0.5rem;
 }
+
 .footer-logout i {
     color: #66bb6a;
 }
 
-/* RESPONSIVIDADE */
+/* Responsividade */
 @media (max-width: 1024px) {
     .container {
         flex-direction: column;
     }
+
     .welcome-section {
         clip-path: none;
         padding: 3rem 1rem;
     }
+
     .menu-section {
         grid-template-columns: 1fr 1fr;
         padding: 2rem;
     }
+
     .logout-btn {
         display: none;
     }
+
     .footer-logout {
         display: block;
     }
@@ -205,15 +217,19 @@ body {
     .menu-section {
         grid-template-columns: 1fr;
     }
+
     .eco-icon {
         font-size: 3rem;
     }
+
     .welcome-section h1 {
         font-size: 2rem;
     }
+
     .menu-card h2 {
         font-size: 1.4rem;
     }
+
     .menu-card p {
         font-size: 0.95rem;
     }
