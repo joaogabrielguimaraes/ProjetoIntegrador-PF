@@ -58,21 +58,21 @@ function selectHorario(element) {
     horarioSelecionado = element.querySelector('p').textContent;
 }
 
-// Função para selecionar o tipo de coleta
 function selectTipo(element) {
-    element.classList.toggle('selecionado');
+    const isSelecionado = element.classList.contains('tipo-selecionado');
 
-    if (element.classList.contains('selecionado')) {
+    // Limpa seleção anterior (se desejar selecionar apenas um por vez)
+    document.querySelectorAll('.tipo-selecionado').forEach(el => {
+        el.classList.remove('tipo-selecionado');
+    });
+
+    if (!isSelecionado) {
         element.classList.add('tipo-selecionado');
-        element.classList.remove('desmarcado');
         tipoColetaSelecionado = element.querySelector('h3').textContent;
     } else {
-        element.classList.remove('tipo-selecionado');
-        element.classList.add('desmarcado');
         tipoColetaSelecionado = '';
     }
 }
-
 // Função para salvar o endereço e agendamento
 function salvarEndereco() {
     // Obtendo os dados dos campos do formulário
