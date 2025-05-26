@@ -63,7 +63,7 @@ function selectTipo(element) {
 
     // Limpa seleção anterior (se desejar selecionar apenas um por vez)
     document.querySelectorAll('.tipo-selecionado').forEach(el => {
-        el.classList.remove('tipo-selecionado');
+        el.classList.remove('tipo-selecionado');    // pelo amor meu irmao, MUDA ISSO, NAO FAZ SENTIDO TUA LÓGICA CARA
     });
 
     if (!isSelecionado) {
