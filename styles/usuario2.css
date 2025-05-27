@@ -11,8 +11,6 @@
     --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 }
 
-
-
 * {
     margin: 0;
     padding: 0;
@@ -44,10 +42,10 @@ body {
 }
 
 .menu {
-    width: 300px;
+    width: 250px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    padding: 2rem;
+    padding: 1rem;
     color: white;
     border-right: 1px solid rgba(255, 255, 255, 0.1);
     position: fixed;
@@ -105,6 +103,10 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+.smart h2{
+    margin: auto;
 }
 
 .mapa {
@@ -171,7 +173,7 @@ body {
     width: 100%;
     padding: 1.2rem;
     margin-top: 2rem;
-    background: var(--gradient);
+    background: linear-gradient(90deg, var(--tertiary-color), var(--light-color));
     border: none;
     border-radius: 12px;
     color: white;
@@ -188,6 +190,8 @@ body {
 .endereco_btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
+    border: 2px solid #2ecc71;  /* Borda verde mais escura */
+
 }
 
 .endereco_btn:active {
@@ -285,14 +289,13 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .menu {
-    width: 320px;
+    width: 300px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
     border-radius: 15px;
     max-height: 1000vh;
     overflow-y: scroll; 
@@ -301,7 +304,6 @@ body {
 }
 
 .reciclagem {
-    background: var(--primary-color);
     padding: 1.5rem;
     border-radius: 15px;
     transition: all 0.3s ease;
@@ -309,6 +311,7 @@ body {
     color: white;
     cursor: pointer;
     margin-bottom: 1rem;
+    
 }
 
 .reciclagem:hover {
@@ -519,9 +522,8 @@ body {
     margin-bottom: 2rem;
 }
 
-.reciclagem {
-    background: var(--primary-color);
-    padding: 1.5rem;
+.reciclagem { 
+    background-color: var(--primary-color);
     border-radius: 15px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -542,15 +544,7 @@ body {
     color: white;
 }
 
-.horas {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 1rem;
-    margin: 1rem 0;
-    color: black;
-}
 
-/* Estilo para a div pai (que contém os horários) */
 .horas {
     display: flex;
     justify-content: center; /* Centraliza os itens no eixo horizontal */
@@ -568,10 +562,10 @@ body {
 /* Estilo para cada horário */
 .horario {
     display: flex;
+    color: black;
     justify-content: center; /* Centraliza o conteúdo no eixo horizontal dentro do item */
     align-items: center;     /* Centraliza o conteúdo no eixo vertical dentro do item */
-    background: rgba(45, 39, 39, 0.418);
-    padding: 1rem;
+    background-color: #a09d9db0;
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
@@ -583,15 +577,15 @@ body {
 /* Hover e estilo para o horário selecionado */
 .horario:hover,
 .selecionado {
-    border: 3px solid transparent;
-    background-color: #4c8baf;
+    border: 2px solid #2ecc71;  /* Borda verde mais escura */
+    background: linear-gradient(90deg, var(--tertiary-color), var(--light-color));
     color: white;
 }
 
 .tipo-selecionado {
-    background-color: #4c8baf;  /* Verde para destacar a seleção */
+    background: linear-gradient(90deg, var(--tertiary-color), var(--light-color));
     color: white;               /* Cor do texto */
-    border: 2px solid #264a5f;  /* Borda verde mais escura */
+    border: 2px solid #2ecc71;  /* Borda verde mais escura */
     padding: 5px 10px;          /* Um pouco de espaçamento, mas não altera o layout */
     border-radius: 5px;         /* Bordas arredondadas */
 }
@@ -605,7 +599,7 @@ body {
     border: none;
     box-shadow: 0 8px 25px rgba(0,0,0,0.05);
     transition: all 0.4s;
-    background: white;
+    background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
 }
 
@@ -631,10 +625,12 @@ body {
 .table {
     border-radius: 15px;
     overflow: hidden;
+    margin: auto;
+
 }
 
 .table thead th {
-    background: var(--primary-color);
+    background: var(--dark-color);
     color: white;
     border: none;
     padding: 15px;
@@ -642,6 +638,8 @@ body {
 
 .table tbody tr {
     color: black; /* Altera o texto para preto */
+    background-color: white;
+
 }
 
 .table-responsive {
