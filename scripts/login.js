@@ -22,7 +22,7 @@ function fazerLogin() {
         if (data.status === "sucesso") {
             setTimeout(() => {
                 // Caminho relativo ou absoluto para a página de destino
-                window.location.href = "../pages/usuario.html";  // Ajuste o caminho se necessário
+                window.location.href = "../pages/inicialUsuario.html";  // Ajuste o caminho se necessário
             }, 2000);
         }
     })

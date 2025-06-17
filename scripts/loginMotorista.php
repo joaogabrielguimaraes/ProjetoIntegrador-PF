@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($usuario) {
             // Aqui idealmente use password_verify se as senhas forem hash
             if ($senha === $usuario['senha']) {
-                $_SESSION['email_motorista'] = $usuario['email'];  // salva na sessão
+                $_SESSION['email_motorista'] = $usuario['email']; 
                 echo json_encode(["status" => "sucesso", "mensagem" => "Login realizado com sucesso!"]);
             } else {
                 echo json_encode(["status" => "erro", "mensagem" => "Senha incorreta!"]);

@@ -61,8 +61,8 @@ function selectHorario(element) {
 function selectTipo(element) {
     const isSelecionado = element.classList.contains('tipo-selecionado');
 
-    // Limpa seleção anterior (se desejar selecionar apenas um por vez)
-
+    // document.querySelectorAll('.tipo-selecionado').forEach(el => {
+    // });
 
     if (!isSelecionado) {
         element.classList.add('tipo-selecionado');

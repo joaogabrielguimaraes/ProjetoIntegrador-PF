@@ -32,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($senha === $usuario['senha']) {
             // Armazena o ID do usuário na sessão
             $_SESSION['usuario_id'] = $usuario['id']; // Armazena o ID do usuário
-
             echo json_encode(["status" => "sucesso", "mensagem" => "Login realizado com sucesso!"]);
         } else {
             echo json_encode(["status" => "erro", "mensagem" => "Senha incorreta!"]);
