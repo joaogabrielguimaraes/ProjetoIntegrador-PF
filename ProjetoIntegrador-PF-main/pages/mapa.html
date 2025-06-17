@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Rota até o Destino</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+    <link rel="stylesheet" href="../styles/map.css">
+    <script src="../scripts/map.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Digite o Endereço de Destino</h2>
+        <div class="form-group">
+            <input type="text" id="cep" placeholder="Ex: Rua X, 123, Bairro, Cidade">
+        </div>
+        <div class="form-group">
+            <button onclick="buscarEndereco()">Buscar Rota</button>
+        </div>
+        <div id="map"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+
+</body>
+</html>

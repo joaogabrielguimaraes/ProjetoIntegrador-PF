@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Coleta Seletiva - Área do Motorista</title>
+    <link rel="stylesheet" href="../styles/motorista.css">
+    <script src="../scripts/motorista.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <header class="header">
+            <h1>Painel do Motorista - Coleta Seletiva</h1>
+            <p>Bem-vindo ao sistema de gerenciamento de coletas</p>
+            <!-- <a href="../pages/dashboard.html">Dashboard</a> -->
+        </header>
+
+        <section class="table-container">
+            <form class="filters" aria-label="Filtros de coleta">
+                <aside class="filter-item">
+                    <label for="filtro-bairro" class="visually-hidden">Filtro por Bairro</label>
+                    <select id="filtro-bairro">
+                        <option value="">Selecione o Bairro</option>
+                        <!-- As opções serão carregadas via JavaScript -->
+                    </select>
+                    <button type="button" class="limpar" id="clear-bairro">Limpar</button>
+                </aside>
+                
+                <aside class="filter-item">
+                    <label for="filtro-material" class="visually-hidden">Filtro por Material</label>
+                    <select id="filtro-material">
+                        <option value="">Tipo de Material</option>
+                        <option value="reciclável">Reciclável</option>
+                        <option value="orgânico">Orgânico</option>
+                        <option value="especial">Especial</option>
+                    </select>
+                    <button type="button" class="limpar" id="clear-material">Limpar</button>
+                </aside>
+                
+                <aside class="filter-item">
+                    <label for="filtro-data" class="visually-hidden">Filtro por Data</label>
+                    <input type="date" id="filtro-data" placeholder="Data">
+                    <button type="button" class="limpar" id="clear-data">Limpar</button>
+                </aside>
+                
+            </form>
+
+            <article aria-label="Lista de coletas">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Data</th>
+                            <th>Bairro</th>
+                            <th>Tipo de Material</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aqui as coletas serão carregadas dinamicamente -->
+                    </tbody>
+                </table>
+            </article>
+        </section>
+    </main>
+
+    <!-- Modal de Detalhes -->
+    <section id="modal-detalhes" class="modal" role="dialog" aria-modal="true" aria-labelledby="detalhes-titulo">
+        <article class="modal-content">
+            <span class="close-modal" onclick="fecharModal()" aria-label="Fechar modal">&times;</span>
+            <h2 id="detalhes-titulo">Detalhes da Coleta</h2>
+            <div class="detalhes-coleta" id="detalhes-conteudo">
+                <!-- Conteúdo será preenchido via JavaScript -->
+            </div>
+        </article>
+    </section>
+</body>
+</html>

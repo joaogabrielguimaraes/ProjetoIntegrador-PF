@@ -1,0 +1,159 @@
+:root {
+    --primary-color: #2ecc71;
+    --secondary-color: #27ae60;
+    --dark-color: #2c3e50;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom,var(--secondary-color), var(--dark-color));
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form_container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    width: 100%;
+    max-width: 500px;
+    margin: 1rem;
+    position: relative;
+}
+
+.back-btn {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: none;
+    border: none;
+    color: var(--dark-color);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: 0.3s;
+} 
+
+.back-btn:hover {
+    color: var(--primary-color);
+    transform: translateX(-3px);
+} 
+
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form_titulo {
+    color: var(--dark-color);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.inserir {
+    margin-bottom: 1.5rem;
+}
+
+.inserir label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.inserir input, .inserir select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    background: white;
+    width: 95%;
+}
+
+.inserir input:focus, select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.1);
+    outline: none;
+}
+
+.file-upload {
+    border: 2px dashed #ddd;
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.file-upload:hover {
+    border-color: var(--primary-color);
+    background: rgba(46, 204, 113, 0.05);
+}
+
+.file-upload i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.mini_texto{
+    text-align: center;
+    font-weight: bolder; 
+    margin-top: 5px;
+}
+
+.btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: 0.3s;
+    margin-top: 1rem;
+}
+
+.btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+}
+
+.progress-bar {
+    height: 6px;
+    background: #ddd;
+    margin-bottom: 2rem;
+    border-radius: 3px;
+    overflow: hidden;
+} 
+
+.progress {
+    height: 100%;
+    background: var(--primary-color);
+    width: 50%;
+    border-radius: 3px;
+    transition: width 0.5s ease;
+}
+
+.script {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
