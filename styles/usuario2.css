@@ -1,99 +1,67 @@
 :root {
-    --primary-color: #6CAB57; /* Principal cor de destaque (verde suave) */
-    --secondary-color: #69EB3E; /* Cor complementar para acentuar (verde claro) */
-    --tertiary-color: #586B51; /* Cor secundária suave (verde escuro) */
-    --accent-color: #EB3DD2; /* Cor vibrante de destaque (rosa) */
-    --glass: #96598D; /* Cor para detalhes e fundos com efeito translúcido (roxo) */
-    --dark-color: #41383F; /* Cor de fundo escura (cinza escuro) */
-    --light-color: #ecf0f1; /* Cor clara para contrastes suaves (off-white) */
-    
-    /* Gradiente */
+    --primary-color: #6CAB57;
+    --secondary-color: #69EB3E;
+    --tertiary-color: #586B51;
+    --accent-color: #EB3DD2;
+    --glass: #96598D;
+    --dark-color: #41383F;
+    --light-color: #ecf0f1;
     --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 }
 
+/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow-y: scroll; 
+    overflow-y: scroll;
     -ms-overflow-style: none;
-    scrollbar-width: none;  
+    scrollbar-width: none;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--dark-color);
-    min-height: 100vh;
     color: var(--light-color);
+    min-height: 100vh;
     background-image: 
         radial-gradient(circle at 20% 30%, rgba(124, 77, 255, 0.2) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(33, 150, 243, 0.2) 0%, transparent 50%); 
-        
+        radial-gradient(circle at 80% 70%, rgba(33, 150, 243, 0.2) 0%, transparent 50%);
 }
 
+/* Dashboard Layout */
 .dashboard {
     display: flex;
     min-height: 100vh;
     position: relative;
+    padding: 1rem;
+    justify-content: space-between;
 }
 
-.dashboard h2{
-    color: white;
-}
-
+/* Menu Lateral */
 .menu {
-    width: 250px;
+    width: 300px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     padding: 1rem;
     color: white;
+    border-radius: 15px;
     border-right: 1px solid rgba(255, 255, 255, 0.1);
     position: fixed;
     left: 0;
     top: 0;
     height: 100vh;
     overflow-y: auto;
+    max-height: 1000vh;
     z-index: 1000;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    display: flex;
+    flex-direction: column;
 }
 
-.container {
-    flex: 1;
-    padding: 2rem;
-    margin-left: 300px;
-    transition: margin-left 0.3s ease;
-}
-
-@media (max-width: 1024px) {
-    .menu {
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-    }
-
-    .menu.active {
-        transform: translateX(0);
-    }
-
-    .container {
-        margin-left: 0;
-    }
-
-    .menu-toggle {
-        display: block;
-        position: fixed;
-        top: 1rem;
-        left: 1rem;
-        z-index: 1001;
-    }
-}
-
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
+.menu h2 {
     color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0.5rem;
 }
 
 .smart {
@@ -103,20 +71,55 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    justify-content: center;
 }
 
-.smart h2{
+.smart h2 {
     margin: auto;
 }
 
-.mapa {
-    height: 50vh;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    margin-bottom: 2rem;
+/* Itens de reciclagem */
+.reciclagem {
+    background-color: var(--primary-color);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    color: white;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
 }
 
+.reciclagem i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.reciclagem h3 {
+    margin: 0.5rem 0;
+}
+
+.reciclagem p {
+    margin: 0;
+}
+
+.reciclagem:hover {
+    background: rgba(255, 255, 255, 0.85);
+    color: black;
+    border: 3px solid black;
+    transform: translateY(-5px);
+}
+
+/* Container Principal */
+.container {
+    flex: 1;
+    padding: 2rem;
+    margin-left: 320px;
+    transition: margin-left 0.3s ease;
+}
+
+/* Endereço */
 .endereco_container {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(15px);
@@ -154,8 +157,8 @@ body {
     border-radius: 12px;
     background: rgba(255, 255, 255, 0.08);
     color: var(--light-color);
-    transition: all 0.4s ease;
     font-size: 1rem;
+    transition: all 0.4s ease;
 }
 
 .item input:focus {
@@ -169,6 +172,7 @@ body {
     color: rgba(255, 255, 255, 0.6);
 }
 
+/* Botão Confirmar Endereço */
 .endereco_btn {
     width: 100%;
     padding: 1.2rem;
@@ -180,205 +184,35 @@ body {
     font-weight: bold;
     font-size: 1.1rem;
     cursor: pointer;
-    transition: all 0.4s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.8rem;
+    transition: all 0.4s ease;
 }
 
 .endereco_btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
-    border: 2px solid #2ecc71;  /* Borda verde mais escura */
-
+    border: 2px solid #2ecc71;
 }
 
 .endereco_btn:active {
     transform: translateY(1px);
 }
 
-.produtos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-@media (max-width: 768px) {
-    .dashboard {
-        flex-direction: column;
-        padding: 0;
-    }
-
-    .menu {
-        width: 100%;
-        position: relative;
-        height: auto;
-        padding: 1rem;
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .container {
-        margin-left: 0;
-        padding: 1rem;
-    }
-
-    .menu-toggle {
-        display: none;
-    }
-
-    .reciclagem {
-        width: 100%;
-        margin-bottom: 1rem;
-    }
-
-    .endereco_container {
-        margin-top: 1rem;
-    }
-
-    .agenda_container {
-        margin-top: 2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .dashboard {
-        flex-direction: column;
-    }
-
-    .menu {
-        order: -1;
-        width: 100%;
-        padding: 1rem;
-        border-radius: 0;
-    }
-
-    .container {
-        width: 100%;
-        padding: 1rem;
-    }
-
-    .endereco_filho {
-        grid-template-columns: 1fr;
-    }
-
-    .horas {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .reciclagem {
-        padding: 1rem;
-    }
-
-    .reciclagem i {
-        font-size: 1.5rem;
-    }
-
-    .reciclagem h3 {
-        font-size: 1rem;
-    }
-
-    .reciclagem p {
-        font-size: 0.8rem;
-    }
-}
-
-.dashboard {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 1rem;
-}
-
-.menu {
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 15px;
-    max-height: 1000vh;
-    overflow-y: scroll; 
-    -ms-overflow-style: none;
-    scrollbar-width: none;  
-}
-
-.reciclagem {
-    padding: 1.5rem;
-    border-radius: 15px;
-    transition: all 0.3s ease;
-    text-align: center;
-    color: white;
-    cursor: pointer;
-    margin-bottom: 1rem;
-    
-}
-
-.reciclagem:hover {
-    transform: translateY(-5px);
-    background: var(--secondary-color);
-}
-
-.reciclagem i {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.reciclagem h3 {
-    margin: 0.5rem 0;
-}
-
-.reciclagem p {
-    margin: 0;
-}
-
+/* Agenda de Coleta */
 .agenda_container {
-    background: rgba(45, 39, 39, 0.418);
+    background: rgba(45, 39, 39, 0.42);
     color: white;
     padding: 2rem;
     border-radius: 20px;
     margin-bottom: 2rem;
 }
 
-.agenda_container h2{
+.agenda_container h2 {
     text-align: center;
     margin-bottom: 10px;
-}
-
-.tempo {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 1rem;
-    margin: 1rem 0;
-    color: black;
-}
-
-.tempo {
-    background: white;
-    padding: 1rem;
-    border-radius: 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.tempo1{
-    background: rgba(45, 39, 39, 0.418);
-    padding: 1rem;
-    border-radius: 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.tempo:hover,
-.tempo.selected {
-    border-color: var(--primary-color);
-    background: #2ecc71;
-    color: white;
-    border: 3px solid transparent;
 }
 
 .input {
@@ -392,207 +226,62 @@ body {
 }
 
 .input input,
-.input textarea,
-.input select {
+.input textarea {
     width: 100%;
     padding: 1rem;
     border: 1px solid rgba(0,0,0,0.1);
     border-radius: 10px;
     background: white;
     font-size: 1rem;
-}
-
-.action-btn {
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 100%;
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.action-btn:hover {
-    background-image: linear-gradient(var(--glass), var(--secondary-color), transparent);
-    transform: translateY(-2px);
-}
-
-.floating-menu {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    display: flex;
-    gap: 1rem;
-    z-index: 100;
-}
-
-@media (max-width: 480px) {
-    .floating-menu {
-        bottom: 1rem;
-        right: 1rem;
-    }
-
-    .float-btn {
-        width: 50px !important;
-        height: 50px !important;
-    }
-}
-
-.float-btn {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: var(--primary-color);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.float-btn:hover {
-    transform: translateY(-5px);
-    background: var(--secondary-color);
-}
-
-.modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    z-index: 1100;
-    max-width: 90%;
-    width: 400px;
-    text-align: center;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translate(-50%, -60%); }
-    to { opacity: 1; transform: translate(-50%, -50%); }
-}
-
-@keyframes fadeOut {
-    from { opacity: 1; transform: translate(-50%, -50%); }
-    to { opacity: 0; transform: translate(-50%, -40%); }
-}
-
-/* Estilo para a div de resumo */
-.resumo-agendamento {
-    display: none; /* Inicialmente oculta */
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 5px;
-    margin-top: 20px;
-}
-
-.resumo-agendamento h2 {
-    color: var(--primary-color);
-}
-
-.resumo-agendamento p {
-    margin: 5px 0;
-}
-
-.resumo-agendamento button {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.resumo-agendamento button:hover {
-    background-color: darken(var(--primary-color), 10%);
-}
-
-.produtos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.reciclagem { 
-    background-color: var(--primary-color);
-    border-radius: 15px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    color: white;
-}
-
-.reciclagem:hover {
-    background: rgba(255, 255, 255, 0.854);
-    transform: translateY(-5px);
     color: black;
-    border: 3px solid black;
 }
 
-.reciclagem i {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: white;
+.input textarea {
+    resize: vertical;
 }
 
-
+/* Horários */
 .horas {
     display: flex;
-    justify-content: center; /* Centraliza os itens no eixo horizontal */
-    align-items: center;     /* Centraliza os itens no eixo vertical */
-    gap: 1rem;               /* Espaçamento entre os itens */
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
     background: white;
     padding: 1rem;
     border-radius: 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
 }
 
-/* Estilo para cada horário */
 .horario {
-    display: flex;
-    color: black;
-    justify-content: center; /* Centraliza o conteúdo no eixo horizontal dentro do item */
-    align-items: center;     /* Centraliza o conteúdo no eixo vertical dentro do item */
+    flex: 1;
+    min-width: 120px;
     background-color: #a09d9db0;
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
+    color: black;
+    padding: 0.75rem;
     transition: all 0.3s ease;
     border: 2px solid transparent;
-    min-width: 120px;  /* Para evitar que o item fique muito pequeno */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Hover e estilo para o horário selecionado */
 .horario:hover,
 .selecionado {
-    border: 2px solid #2ecc71;  /* Borda verde mais escura */
+    border: 2px solid #2ecc71;
     background: linear-gradient(90deg, var(--tertiary-color), var(--light-color));
     color: white;
 }
 
+/* Tipo selecionado */
 .tipo-selecionado {
     background: linear-gradient(90deg, var(--tertiary-color), var(--light-color));
-    color: white;               /* Cor do texto */
-    border: 2px solid #2ecc71;  /* Borda verde mais escura */
-    padding: 5px 10px;          /* Um pouco de espaçamento, mas não altera o layout */
-    border-radius: 5px;         /* Bordas arredondadas */
+    color: white;
+    border: 2px solid #2ecc71;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
-
-
-
-
 
 .card {
     border-radius: 20px;
@@ -622,115 +311,68 @@ body {
     color: var(--primary-color);
 }
 
+/* Tabela */
 .table {
-    border-radius: 15px;
-    overflow: hidden;
-    margin: auto;
-
-}
-
-.table thead th {
     background: var(--dark-color);
     color: white;
     border: none;
-    padding: 15px;
+    padding: 15px;    border-radius: 15px;
+    overflow: hidden;
+    margin: auto;
+    width: 100%;
 }
 
-.table tbody tr {
-    color: black; /* Altera o texto para preto */
-    background-color: white;
+/* Media Queries para Responsividade */
+@media screen and (max-width: 768px) {
+    .dashboard {
+        flex-direction: column;
+        padding: 0.5rem;
+    }
 
-}
+    .menu {
+        width: 100%;
+        position: relative;
+        height: auto;
+        border-radius: 0;
+        margin-bottom: 1rem;
+    }
 
-.table-responsive {
-    overflow-x: auto;
-}
-
-.table-hover tbody tr:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
-.badge {
-    font-size: 0.9em;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-.bg-primary {
-    background-color: var(--primary-color);
-    color: rgb(14, 13, 13);
-}
-
-.status-badge {
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 0.9em;
-    font-weight: 500;
-}
-
-.status-pendente {
-    background: #fff3e0;
-    color: #f57c00;
-}
-
-.btn {
-    padding: 12px 25px;
-    border-radius: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s;
-}
-
-.btn-outline-primary {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-    background: transparent;
-}
-
-.btn-outline-primary:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: translateY(-2px);
-}
-
-.btn-outline-danger {
-    border-color: #f44336;
-    color: #f44336;
-    background: transparent;
-}
-
-.btn-outline-danger:hover {
-    background: #f44336;
-    color: white;
-    transform: translateY(-2px);
-}
-
-.fas {
-    font-size: 1.2em;
-}
-
-@media (max-width: 480px) {
     .container {
+        margin-left: 0;
         padding: 1rem;
+    }
+
+    .endereco_filho {
+        grid-template-columns: 1fr;
+    }
+
+    .horas {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .horario {
+        width: 100%;
     }
 
     .endereco_container {
-        padding: 1rem;
+        padding: 1.5rem;
     }
 
-    .item label {
-        font-size: 1rem;
+    .card {
+        margin-bottom: 1rem;
     }
 
-    .item input {
-        padding: 0.8rem;
-        font-size: 0.9rem;
+    .table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
     }
+}
 
-    .endereco_btn {
-        padding: 0.8rem;
-        font-size: 1rem;
+@media screen and (max-width: 480px) {
+    .smart {
+        font-size: 1.2rem;
     }
 
     .reciclagem {
@@ -741,11 +383,11 @@ body {
         font-size: 2rem;
     }
 
-    .reciclagem h3 {
-        font-size: 1.1rem;
+    .item input {
+        padding: 0.8rem;
     }
 
-    .reciclagem p {
-        font-size: 0.9rem;
+    .endereco_btn {
+        padding: 1rem;
     }
 }
